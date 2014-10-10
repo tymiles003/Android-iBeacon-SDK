@@ -1,22 +1,19 @@
 Android-iBeacon-SDK
 ===================
 
+// this is ...
+
 Install:
+========
 
-Create your own API-KEY at admin panel
-Download Latio-iBeacon-Android-SDK
-Add Latio-iBeacon-SDK like a library to your Android Project
-(В ПЕНЬ) Set LatioApplication to your AndroidManifest.xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:name=”latio.ibeacon.sdk.LatioApplication”>
+1. Create your own API-KEY at admin panel.
+------------------------------------------
 
-    </application>
-</manifest>
+2. Add Android-iBeacon-SDK like a library to your Android Project
+-----------------------------------------------------------------
 
-If you have your custom application, you have to extends from LatioApplication, than set your application in AndroidManifest.xml
-
-Add your API-KEY to your AndroidManifest.xml
+3.Add your API-KEY to your AndroidManifest.xml
+----------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -26,9 +23,11 @@ Add your API-KEY to your AndroidManifest.xml
                    android:value="YOUR_API_KEY"/>
     </application>
 </manifest>
+
 YOUR_API_KEY change to your real API-KEY
 
-(Optional) Add permission to your AndroidManifest.xml:
+4. (Optional) Add permission to your AndroidManifest.xml:
+---------------------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -41,17 +40,24 @@ YOUR_API_KEY change to your real API-KEY
     </application>
 </manifest>
 
-you add this permission SDK may fix some Android Bluetooth bugs.
+you add this permission SDK may fix Android bug 62427 Bluetooth bugs.
+
+
+Well done! It works!
+====================
 
 
 
 
 Usage:
+======
 
 After install, SDK is ready to work and process data through default logic.
 If you want custom logic you have to implement next steps:
 
-Create NearbyContentListener:
+
+1. Create NearbyContentListener:
+--------------------------------
 NearbyContentListener myNearbyContentListener = new NearbyContentListener() {
 
     @Override
@@ -70,19 +76,26 @@ NearbyContentListener myNearbyContentListener = new NearbyContentListener() {
     }
 }
 
-You can call to default logic by super method. 
-            Example for beaconContentAppeared:
-	@Override
+
+2.Сall to default logic by super method. 
+----------------------------------------
+Example for beaconContentAppeared:
+            
+
     	public void contentAppeared(NearbyContent content) {
 	    super.beaconContentAppeared(content, Proximity proximity);
 
 	    // your code
    	}
 
-Set your NearbyContentListener to NearbyContentManager like this:
+
+3. Set your NearbyContentListener to NearbyContentManager:
+----------------------------------------------------------
 NearbyContentManager.getInstance().setListener(myNearbyContentListener);
 
-You can get custom json data from content. 
+
+4. You can get custom json data from content. 
+---------------------------------------------
 Example:
 @Override
 public void contentAppeared(NearbyContent content) {
