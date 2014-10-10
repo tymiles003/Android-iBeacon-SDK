@@ -1,70 +1,46 @@
-Android-iBeacon-SDK
-===================
+# Android-iBeacon-SDK
 
-// this is ...
+**Latio** cloud service provide simple way to show your users content nearby iBeacon. With Android-iBeacon-SDK you can easy show content in your android app and outside them. Customize content in cloud without rebuilding android app.
 
 Install:
 ========
 
-1. Create your own API-KEY at admin panel.
---
+### 1. Create your own API-KEY at admin panel.
 
 
-2. Add Android-iBeacon-SDK like a library to your Android Project
---
+### 2. Add Android-iBeacon-SDK like a library to your Android Project
 
 
-3. Add your API-KEY to your AndroidManifest.xml
---
+### 3. Add your API-KEY to your application in AndroidManifest.xml
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <application>
-
-        <meta-data android:name="latio.ibeacon.sdk.api"
-                   android:value="YOUR_API_KEY"/>
-    </application>
-</manifest>
+<meta-data android:name="latio.ibeacon.sdk.api"
+	android:value="YOUR_API_KEY"/>
 ```
 
-YOUR_API_KEY change to your real API-KEY
+**YOUR_API_KEY** change to your real **API-KEY**
 
 
-4. (Optional) Add permission to your AndroidManifest.xml:
---
+### 4. (*Optional*) Add permission to your AndroidManifest.xml:
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-
-    <application>
-
-        <meta-data android:name="latio.ibeacon.sdk.api"
-                   android:value="YOUR_API_KEY"/>
-    </application>
-</manifest>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 ```
 you add this permission SDK may fix Android bug 67272 Bluetooth bugs.
 
 
-Well done! It works!
-====================
+#### Well done! It works!
+
+
 
 
 
 
 Usage:
 ======
-
-After install, SDK is ready to work and process data through default logic.
+> After install, SDK is ready to work and process data through default logic.
 If you want custom logic you have to implement next steps:
 
 
-1. Create NearbyContentListener:
---
-
+### 1. Create NearbyContentListener:
 ```java
 NearbyContentListener myNearbyContentListener = new NearbyContentListener() {
 
@@ -83,8 +59,7 @@ NearbyContentListener myNearbyContentListener = new NearbyContentListener() {
 ```
 
 
-2. Сall to default logic by super method. 
---
+### 2. Сall to default logic by super method.
 Example for beaconContentAppeared:
             
 ```java
@@ -97,13 +72,11 @@ public void contentAppeared(NearbyContent content) {
 ```
 
 
-3. Set your NearbyContentListener to NearbyContentManager:
-----------------------------------------------------------
+### 3. Set your NearbyContentListener to NearbyContentManager:
 NearbyContentManager.getInstance().setListener(myNearbyContentListener);
 
 
-4. You can get custom json data from content. 
---
+### 4. You can get custom json data from content.
 Example:
 ```java
 @Override
@@ -115,15 +88,14 @@ public void contentAppeared(NearbyContent content) {
 ```
 
 
-5. For Appointment functional you have to provide userId:
---
+### 5. For Appointment functional you have to provide userId:
+
 ```java
 User.getInstance().provideUserId("USER_ID");
 ```
 
 
-6. Custom Latio scanner notification:
---
+### 6. Custom Latio scanner notification:
 ```java
 ScannerNotification.getInstance().setIconId(R.drawable.ic_mylogo);
 ScannerNotification.getInstance().setTitleId(R.string.notification_title);
@@ -132,6 +104,5 @@ ScannerNotification.getInstance().setActivity("com.myapp.MyActivity");
 ```
 
 License
-----
-
+--
 New BSD
