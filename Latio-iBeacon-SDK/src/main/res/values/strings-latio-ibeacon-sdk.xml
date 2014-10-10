@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="latio_notification_title">Latio Scanner</string>
+    <string name="latio_notification_body">Saving battery!</string>
+    <string name="latio_title_activity">FullscreenActivity</string>
+
+    <!-- Errors -->
+    <string name="error_1">Wrong api-key</string>
+    <string name="error_2">Not authorized</string>
+    <string name="error_3">Invalid access token</string>
+    <string name="error_4">Token has expired</string>
+    <string name="error_5">No access token</string>
+
+</resources>

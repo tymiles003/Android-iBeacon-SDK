@@ -18,7 +18,11 @@ Install:
 ```
 
 **YOUR_API_KEY** change to your real **API-KEY**
-
+> If you extend from Application and use it in your AndroidManifest.xml.
+> You have to:
+> 
+- 1. Remove "android:name=".LatioApplication" from Android-iBeacon-SDK AndroidManifest.xml.
+- 2. Extend your custom application from LatioApplication.
 
 ### 4. (*Optional*) Add permission to your AndroidManifest.xml:
 ```xml

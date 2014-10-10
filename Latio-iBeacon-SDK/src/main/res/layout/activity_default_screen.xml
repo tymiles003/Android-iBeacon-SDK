@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            android:background="#ff6e869e"/>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+        <LinearLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingBottom="@dimen/activity_latio_vertical_margin"
+                android:paddingLeft="@dimen/activity_latio_horizontal_margin"
+                android:paddingRight="@dimen/activity_latio_horizontal_margin"
+                android:paddingTop="@dimen/activity_latio_vertical_margin">
+
+
+            <!--style="@style/LatioText.Title.White"-->
+            <TextView
+                    android:id="@+id/textHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@android:color/white"
+                    android:text="ololo"/>
+
+            <RelativeLayout
+                    android:id="@+id/imgContainer"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:padding="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal">
+
+                <include layout="@layout/view_progress"/>
+
+                <ImageView
+                        android:id="@+id/imgLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/transparent"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:id="@+id/whiteLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                <View
+                        android:layout_width="1px"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"/>
+            </LinearLayout>
+
+            <!--style="@style/LatioText.SubTitle.White"-->
+            <TextView
+                    android:id="@+id/textTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@android:color/white"
+                    android:text="ololo"/>
+
+            <LinearLayout
+                    android:id="@+id/whiteLine2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                <View
+                        android:layout_width="1px"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/white"/>
+            </LinearLayout>
+
+            <!--style="@style/LatioText.SubTitle.White"-->
+            <TextView
+                    android:id="@+id/textBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

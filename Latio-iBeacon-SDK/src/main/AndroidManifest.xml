@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="latio.ibeacon.sdk">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <!-- Optional. The permission fix Android bug 67272 -->
+    <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> -->
+
+    <application
+            android:name=".LatioApplication"
+            android:allowBackup="true">
+
+        <!-- Bluetooth Crash Resolver. Fix Android bug 67272 -->
+        <!-- =================================================================================== -->
+        <receiver android:name="com.radiusnetworks.bluetoothcrashresolver.StartupBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.radiusnetworks.bluetoothcrashresolver.DummyService"/>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+
+
+        <!-- Bluetooth Low Energy module -->
+        <!-- =================================================================================== -->
+        <service
+                android:name=".service.BluetoothLeService"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="latio.ibeacon.sdk.service.START_SCAN_LE"/>
+                <action android:name="latio.ibeacon.sdk.service.STOP_SCAN_LE"/>
+            </intent-filter>
+        </service>
+        <receiver android:name=".broadcast.receiver.BluetoothBroadcast">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+                <action android:name="android.bluetooth.adapter.action.DISCOVERY_FINISHED"/>
+            </intent-filter>
+        </receiver>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+
+
+        <!-- Latio Server synchronization -->
+        <!-- =================================================================================== -->
+        <service android:name=".service.SyncAnalyticsService">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="ua.latproject.network.utils.SYNC"/>
+                <action android:name="ua.latproject.bluetooth.beacon.ACTION_LOSE"/>
+                <action android:name="ua.latproject.bluetooth.beacon.ACTION_LOSE_ALL"/>
+            </intent-filter>
+        </service>
+        <receiver android:name=".broadcast.receiver.SyncCacheBroadcast">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="latio.ibeacon.sdk.network.utils.SYNC"/>
+            </intent-filter>
+        </receiver>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+
+
+        <!-- NearbyContent events -->
+        <!-- =================================================================================== -->
+        <receiver
+                android:name=".broadcast.receiver.NearbyContentReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="latio.ibeacon.sdk.NEARBY_CONTENT_APPEARED"/>
+                <action android:name="latio.ibeacon.sdk.NEARBY_CONTENT_UPDATED"/>
+                <action android:name="latio.ibeacon.sdk.NEARBY_CONTENT_DISAPPEARED"/>
+            </intent-filter>
+        </receiver>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+
+
+        <!-- Default NearbyContent Screen -->
+        <!-- =================================================================================== -->
+        <activity
+                android:name=".ui.activity.ScreenActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:label="@string/latio_title_activity"
+                android:launchMode="singleInstance"
+                android:theme="@style/FullscreenTheme"/>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+    </application>
+
+</manifest>
