@@ -1,6 +1,6 @@
 # Android-iBeacon-SDK
 
-**Latio** cloud service provide simple way to show your users content nearby iBeacon. With Android-iBeacon-SDK you can easy show content in your android app and outside them. Customize content in cloud without rebuilding android app.
+**Latio** cloud service provides a simple way to show your users content nearby iBeacon. With Android-iBeacon-SDK you can show content in your android app and outside it. Customize content in the cloud without rebuilding android app.
 
 Install:
 ========
@@ -24,7 +24,7 @@ Install:
 ```xml
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 ```
-you add this permission SDK may fix Android bug 67272 Bluetooth bugs.
+If you added the permission, SDK may fix Android bug 67272.
 
 
 #### Well done! It works!
