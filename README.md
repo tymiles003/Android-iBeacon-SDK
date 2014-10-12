@@ -92,10 +92,13 @@ public void contentAppeared(NearbyContent content) {
 ```
 
 
-### 5. For Appointment functional you have to provide userId:
-
+### 5. User data:
+For Appointment and for another functional when you need to get user info, you can provide it.
 ```java
-User.getInstance().provideUserId("USER_ID");
+User.getInstance().provideId("USER_ID");
+User.getInstance().provideName("USER_NAME");
+User.getInstance().provideEmail("USER_EMAIL");
+User.getInstance().provideAvatar("USER_AVATAR");
 ```
 
 
