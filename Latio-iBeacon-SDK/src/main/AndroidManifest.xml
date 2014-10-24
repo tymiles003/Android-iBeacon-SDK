@@ -2,18 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="latio.ibeacon.sdk">
 
+    <!-- Required permissions -->
+    <!-- ======================================================================================= -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- ======================================================================================= -->
+    <!-- ======================================================================================= -->
+
 
     <!-- Optional. The permission fix Android bug 67272 -->
+    <!-- ======================================================================================= -->
     <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> -->
+    <!-- ======================================================================================= -->
+    <!-- ======================================================================================= -->
+
+
+    <!-- Optional. For receiving messages from Latio-Admin-SDK -->
+    <!-- These permissions for implementing Google Cloud Messaging -->
+    <!-- More details https://developer.android.com/intl/en/google/gcm/client.html -->
+    <!-- ======================================================================================= -->
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+    <!-- The permission need just version lower than Android 4.0.4 -->
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS"/> -->
+
+    <!-- Optional—use only if the app wants to keep the device from sleeping -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--&lt;!&ndash; Change "com.example.gcm" to your application package! &ndash;&gt;-->
+    <!--<permission android:name="com.example.gcm.permission.C2D_MESSAGE"-->
+                <!--android:protectionLevel="signature"/>-->
+    <!--&lt;!&ndash; Change "com.example.gcm" to your application package! &ndash;&gt;-->
+    <!--<uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE"/>-->
+    <!-- End of Google Cloud Messaging permissions -->
+    <!-- ======================================================================================= -->
+    <!-- ======================================================================================= -->
 
     <application
             android:name=".LatioApplication"
             android:allowBackup="true">
 
-        <!-- Bluetooth Crash Resolver. Fix Android bug 67272 -->
+        <!-- Bluetooth Crash Resolver. Fix Android bug 67272 (Optional) -->
         <!-- =================================================================================== -->
         <receiver android:name="com.radiusnetworks.bluetoothcrashresolver.StartupBroadcastReceiver">
             <intent-filter>
@@ -21,6 +54,22 @@
             </intent-filter>
         </receiver>
         <service android:name="com.radiusnetworks.bluetoothcrashresolver.DummyService"/>
+        <!-- =================================================================================== -->
+        <!-- =================================================================================== -->
+
+
+        <!-- Google Cloud Messaging for receive message from Latio-Admin-SDK (Optional) -->
+        <!-- =================================================================================== -->
+        <!--<receiver-->
+                <!--android:name="latio.ibeacon.sdk.broadcast.broadcast.receiver.MessagesReceiver"-->
+                <!--android:permission="com.google.android.c2dm.permission.SEND">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.android.c2dm.intent.RECEIVE"/>-->
+                <!--&lt;!&ndash; Change "com.example.gcm" to your application package! &ndash;&gt;-->
+                <!--<category android:name="com.example.gcm"/>-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <service android:name=".service.GcmIntentService"/>
         <!-- =================================================================================== -->
         <!-- =================================================================================== -->
 
