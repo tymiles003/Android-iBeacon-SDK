@@ -44,6 +44,28 @@ Usage:
 If you want custom logic you have to implement next steps:
 
 
+### Beacon events:
+If you need to do some custom action with beacons. You could implement OnBeaconListener.
+```java
+OnBeaconListener mBeaconListener = new OnBeaconListener() {
+    @Override
+    public void beaconDetected(Beacon beacon, Proximity proximity) {
+    }
+
+    @Override
+    public void beaconStayAtPoint(Beacon beacon, Proximity proximity) {
+    }
+
+    @Override
+    public void beaconProximityChanged(Beacon beacon, boolean cameCloser, Proximity proximity) {
+    }
+
+    @Override
+    public void beaconLost(Beacon beacon) {
+    }
+};
+```
+
 ### 1. Create NearbyContentListener:
 ```java
 NearbyContentListener myNearbyContentListener = new NearbyContentListener() {
